@@ -72,6 +72,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .secret(bCryptPasswordEncoder.encode(clientSecret))
                 .authorizedGrantTypes("password", "authorization_code", "refresh_token")
                 .scopes("read", "write", "trust")
+                .resourceIds("api")
                 .accessTokenValiditySeconds(accessTokenValidity)
                 .refreshTokenValiditySeconds(refreshTokenValidity);
     }
