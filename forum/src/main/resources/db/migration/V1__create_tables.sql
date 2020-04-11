@@ -1,0 +1,34 @@
+CREATE TABLE users (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(40) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    first_name VARCHAR(60) NOT NULL,
+    last_name VARCHAR(60) NOT NULL,
+    role VARCHAR(40) NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    modified_at TIMESTAMP NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE (username)
+);
+
+CREATE TABLE topics (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    modified_at TIMESTAMP NOT NULL,
+    user_id BIGINT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE replies (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    content VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    modified_at TIMESTAMP NOT NULL,
+    user_id BIGINT,
+    topic_id BIGINT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (topic_id) REFERENCES topics(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
