@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * Flyway config which cleans itself and migrates on application startup.
  */
 @Configuration
-public class FlywayMigrationConfiguration {
+public class FlywayMigrationConfig {
 
     @Bean
     public FlywayMigrationStrategy clean() {
