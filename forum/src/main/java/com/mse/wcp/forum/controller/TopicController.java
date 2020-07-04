@@ -58,7 +58,7 @@ public class TopicController {
      */
     @PostMapping
     public ResponseEntity<TopicDTO> create(@RequestBody TopicDTO topicDTO) {
-        UserEntity userEntity = userService.get(topicDTO.getUserId()).orElseThrow(() -> new IllegalArgumentException("User does not exist."));
+        UserEntity userEntity = userService.findByUsername(topicDTO.getUsername()).orElseThrow(() -> new IllegalArgumentException("User does not exist."));
 
         TopicEntity topicEntity = topicMapper.toTopicEntity(topicDTO);
         topicEntity.setId(null);
@@ -77,7 +77,7 @@ public class TopicController {
      */
     @PutMapping("/{id}")
     public ResponseEntity<TopicDTO> update(@PathVariable("id") Long id, @RequestBody TopicDTO topicDTO) {
-        UserEntity userEntity = userService.get(topicDTO.getUserId()).orElseThrow(() -> new IllegalArgumentException("User does not exist."));
+        UserEntity userEntity = userService.findByUsername(topicDTO.getUsername()).orElseThrow(() -> new IllegalArgumentException("User does not exist."));
 
         TopicEntity topicEntity = topicMapper.toTopicEntity(topicDTO);
         topicEntity.setId(id);

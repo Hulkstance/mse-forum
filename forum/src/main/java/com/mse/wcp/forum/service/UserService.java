@@ -17,4 +17,6 @@ public interface UserService {
 
     void delete(Long id);
 
+    Optional<UserEntity> findByUsername(String username);
+
 }

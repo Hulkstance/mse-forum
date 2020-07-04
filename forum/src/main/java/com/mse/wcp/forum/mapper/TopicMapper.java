@@ -12,7 +12,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface TopicMapper {
 
-    @Mapping(source = "user.id", target = "userId")
+    @Mapping(source = "user.username", target = "username")
     TopicDTO toTopicDTO(TopicEntity topicEntity);
 
     List<TopicDTO> toTopicDTOs(List<TopicEntity> topicEntities);

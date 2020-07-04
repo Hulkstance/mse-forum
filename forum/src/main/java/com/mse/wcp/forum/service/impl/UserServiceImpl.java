@@ -64,4 +64,8 @@ public class UserServiceImpl implements UserService {
         userEntity.ifPresent(entity -> userRepository.delete(entity));
     }
 
+    @Override
+    public Optional<UserEntity> findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
 }
